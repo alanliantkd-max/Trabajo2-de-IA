@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparativa — IA Responsable S2</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 32px 0 24px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #8888aa;
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin: 28px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #2a2a4a;
+    }
+
+    /* --- Comparison table --- */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .comp-table thead th {
+      background: #1a1a2e;
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 2px solid #5d44ff44;
+      color: #a89cff;
+      font-weight: 700;
+    }
+
+    .comp-table thead th:first-child {
+      width: 22%;
+    }
+
+    .comp-table thead th.odin {
+      background: #1a2a1a;
+      color: #88ff88;
+    }
+
+    .comp-table thead th.other {
+      background: #2a1a1a;
+      color: #ffaa88;
+    }
+
+    .comp-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #1e1e36;
+      vertical-align: top;
+    }
+
+    .comp-table tr:hover td {
+      background: #1a1a2e44;
+    }
+
+    .comp-table td:first-child {
+      color: #a89cff;
+      font-weight: 600;
+    }
+
+    .check { color: #88ff88; }
+    .cross { color: #ff6666; }
+    .partial { color: #ffcc44; }
+
+    /* --- Summary cards --- */
+    .summary-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .summary-card {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .summary-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-card.odin {
+      border-color: #44ff4444;
+    }
+
+    .summary-card.odin h3 {
+      color: #88ff88;
+    }
+
+    .summary-card.other {
+      border-color: #ffaa8844;
+    }
+
+    .summary-card.other h3 {
+      color: #ffaa88;
+    }
+
+    .summary-card ul {
+      list-style: none;
+      font-size: 0.82rem;
+      color: #bbbbcc;
+    }
+
+    .summary-card li {
+      padding: 3px 0;
+    }
+
+    .conclusion {
+      background: #1a1a2e;
+      border: 1px solid #5d44ff44;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 20px;
+      font-size: 0.88rem;
+      color: #bbbbcc;
+    }
+
+    .conclusion strong {
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 0 12px;
+      font-size: 0.7rem;
+      color: #444466;
+    }
+
+    @media (max-width: 600px) {
+      .summary-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Comparativa de proyectos — IA Responsable S2</h1>
+    <p>Célula Odin vs Célula contraria · IA Generativa Semana 2 · Cohorte C8</p>
+  </header>
+
+  <h2>Tabla comparativa</h2>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th class="odin">Célula Odin</th>
+        <th class="other">Otra célula (Orquídea)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nombre del asistente</td>
+        <td>Asistente Riwi</td>
+        <td>Orquídea · Sonic</td>
+      </tr>
+      <tr>
+        <td>Contexto del asistente</td>
+        <td>Ayuda a coders de Riwi con dudas del entrenamiento</td>
+        <td>Enciclopedia educativa de fauna colombiana</td>
+      </tr>
+      <tr>
+        <td>Situaciones identificadas</td>
+        <td><span class="check">&#10003;</span> 3 situaciones con caso, decisión e implementación</td>
+        <td><span class="partial">~</span> No documenta situaciones de riesgo explícitamente</td>
+      </tr>
+      <tr>
+        <td>Privacidad (Ley 1581)</td>
+        <td><span class="check">&#10003;</span> <code>protegerDatos()</code> oculta correos, celulares y documentos antes de enviar al modelo</td>
+        <td><span class="cross">&#10007;</span> No solicita datos personales, pero no tiene filtro activo si el usuario los escribe</td>
+      </tr>
+      <tr>
+        <td>Sesgo / Equidad</td>
+        <td><span class="check">&#10003;</span> Test pairwise documentado: misma pregunta, un dato cambiado</td>
+        <td><span class="partial">~</span> No menciona pruebas de sesgo. El tema (fauna) tiene bajo riesgo de sesgo</td>
+      </tr>
+      <tr>
+        <td>Explicabilidad</td>
+        <td><span class="check">&#10003;</span> <code>aviso()</code> cita cantidad y nombre de fuentes en cada respuesta</td>
+        <td><span class="check">&#10003;</span> Cada ficha cita su fuente con enlace (Smithsonian, WWF, BioWeb)</td>
+      </tr>
+      <tr>
+        <td>Consentimiento</td>
+        <td><span class="check">&#10003;</span> Regla: no usar conversaciones para entrenar sin permiso explícito</td>
+        <td><span class="cross">&#10007;</span> No mencionado</td>
+      </tr>
+      <tr>
+        <td>Divulgación</td>
+        <td><span class="check">&#10003;</span> Aviso visible: "Este chat usa IA" + aviso bajo cada respuesta</td>
+        <td><span class="check">&#10003;</span> Banner: "La IA puede cometer errores. Verifica la información importante."</td>
+      </tr>
+      <tr>
+        <td>Control humano (alto impacto)</td>
+        <td><span class="check">&#10003;</span> <code>requiereHumano()</code> detecta temas sensibles y deriva a un coach</td>
+        <td><span class="partial">~</span> No aplica: el dominio (fauna) no genera decisiones de alto impacto sobre personas</td>
+      </tr>
+      <tr>
+        <td>Funciones JS (lab)</td>
+        <td><span class="check">&#10003;</span> 3 funciones funcionales: <code>protegerDatos()</code>, <code>requiereHumano()</code>, <code>aviso()</code></td>
+        <td><span class="cross">&#10007;</span> 0 funciones JS. Todo es HTML+CSS puro con contenido precargado</td>
+      </tr>
+      <tr>
+        <td>Demo interactivo</td>
+        <td><span class="check">&#10003;</span> Chat funcional donde se prueban las 3 funciones en vivo</td>
+        <td><span class="check">&#10003;</span> Buscador con 3 preguntas precargadas + simulación de error</td>
+      </tr>
+      <tr>
+        <td>Reglas transversales</td>
+        <td><span class="check">&#10003;</span> Tabla con los 6 principios y su regla concreta</td>
+        <td><span class="cross">&#10007;</span> No tiene sección de reglas o principios documentados</td>
+      </tr>
+      <tr>
+        <td>Diseño visual</td>
+        <td><span class="partial">~</span> Limpio y funcional, tema oscuro, sin imágenes</td>
+        <td><span class="check">&#10003;</span> Muy elaborado: Google Fonts, imágenes embebidas (692KB), láminas ilustradas, accesibilidad (ARIA)</td>
+      </tr>
+      <tr>
+        <td>Accesibilidad</td>
+        <td><span class="partial">~</span> Básica: semántica HTML, contraste adecuado</td>
+        <td><span class="check">&#10003;</span> Avanzada: skip links, ARIA labels, roles, popover nativo, focus visible</td>
+      </tr>
+      <tr>
+        <td>Peso del archivo</td>
+        <td><span class="check">&#10003;</span> ~8 KB (ligero, carga instantánea)</td>
+        <td><span class="partial">~</span> 692 KB (imágenes webp embebidas en base64)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Resumen por equipo</h2>
+  <div class="summary-row">
+    <div class="summary-card odin">
+      <h3>Célula Odin — Fortalezas</h3>
+      <ul>
+        <li>+ Cubre los 6 principios de IA responsable con reglas concretas</li>
+        <li>+ 3 funciones JS funcionales (lab completo)</li>
+        <li>+ Situaciones documentadas con caso, decisión e implementación</li>
+        <li>+ Demo interactivo que prueba cada función en vivo</li>
+        <li>+ Archivo ligero y fácil de compartir</li>
+      </ul>
+    </div>
+    <div class="summary-card other">
+      <h3>Otra célula (Orquídea) — Fortalezas</h3>
+      <ul>
+        <li>+ Diseño visual profesional con láminas ilustradas</li>
+        <li>+ Excelente accesibilidad (ARIA, skip links, focus management)</li>
+        <li>+ Fuentes citadas con enlaces verificables</li>
+        <li>+ Aviso de IA visible</li>
+        <li>+ Simulación de error como caso educativo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <strong>Conclusión:</strong> Los dos proyectos tienen enfoques distintos. Odin priorizó las <strong>decisiones y reglas de IA responsable</strong> con funciones comprobables en código, que es el objetivo directo del entregable ("del principio a la regla"). Orquídea priorizó el <strong>diseño visual y la experiencia de usuario</strong> del asistente, con accesibilidad avanzada y fuentes citadas, pero sin funciones JS ni documentación explícita de los 6 principios. Los dos se complementan: el enfoque ideal combina las reglas funcionales de Odin con la experiencia visual y accesibilidad de Orquídea.
+  </div>
+
+  <footer>IA Generativa S2 — Cohorte C8 — Riwi Medellín</footer>
+
+</div>
+</body>
+</html>
